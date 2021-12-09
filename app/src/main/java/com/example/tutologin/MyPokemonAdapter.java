@@ -3,18 +3,31 @@ package com.example.tutologin;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class MyPokemonAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MyPokemonAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
-    ArrayList<MyPokemonBank> mPokemonList;
+    public interface Listener {
+        void onClickDelete(MyPokemonBank myPokemonBank);
+        void onItemClick(MyPokemonBank item);
+    }
 
-    MyPokemonAdapter(ArrayList<MyPokemonBank> mPokemonList){
-        this.mPokemonList = (ArrayList<MyPokemonBank>) mPokemonList;
+    private Listener callback;
+    private final Listener listener;
+
+    List<MyPokemonBank> mPokemonList;
+
+    MyPokemonAdapter(List<MyPokemonBank> mPokemonList, Listener callback, Listener listener){
+        this.callback = callback;
+        this.mPokemonList = mPokemonList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -27,7 +40,7 @@ public class MyPokemonAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.display(mPokemonList.get(position));
+        holder.display(mPokemonList.get(position), callback, listener);
     }
 
     @Override
