@@ -17,7 +17,6 @@ public class HomeActivity extends Activity implements MyPokemonAdapter.Listener 
     private ArrayList<MyPokemonBank> mPokemonList;
     private MyPokemonAdapter mAdapter;
     private TextView mHelloText;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
