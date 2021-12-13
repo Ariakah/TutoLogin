@@ -17,14 +17,12 @@ public class MyPokemonAdapter extends RecyclerView.Adapter<MyViewHolder>{
     }
 
     private Listener callback;
-    private final Listener listener;
 
     List<MyPokemonBank> mPokemonList;
 
-    MyPokemonAdapter(List<MyPokemonBank> mPokemonList, Listener callback, Listener listener){
+    MyPokemonAdapter(List<MyPokemonBank> mPokemonList, Listener callback){
         this.callback = callback;
         this.mPokemonList = mPokemonList;
-        this.listener = listener;
     }
 
     @NonNull
@@ -37,7 +35,7 @@ public class MyPokemonAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.display(mPokemonList.get(position), callback, listener);
+        holder.display(mPokemonList.get(position), callback);
     }
 
     @Override
