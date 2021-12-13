@@ -27,7 +27,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
         mDeleteButton = view.findViewById(R.id.home_button_delete);
     }
 
-    public void display(MyPokemonBank myPokemonBank, MyPokemonAdapter.Listener callback, MyPokemonAdapter.Listener listener) {
+    public void display(MyPokemonBank myPokemonBank, MyPokemonAdapter.Listener callback) {
 
         Glide.with(itemView.getContext())
                 .load(myPokemonBank.getAvatarUrl())
@@ -39,7 +39,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onItemClick(myPokemonBank);
+                callback.onItemClick(myPokemonBank);
             }
         });
     }

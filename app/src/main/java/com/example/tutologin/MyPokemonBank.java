@@ -1,6 +1,8 @@
 package com.example.tutologin;
 
-public class MyPokemonBank {
+import java.io.Serializable;
+
+public class MyPokemonBank implements Serializable {
 
     private String name;
     private String type;

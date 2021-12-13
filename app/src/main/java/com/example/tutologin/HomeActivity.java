@@ -18,6 +18,12 @@ public class HomeActivity extends Activity implements MyPokemonAdapter.Listener 
     private MyPokemonAdapter mAdapter;
     private TextView mHelloText;
 
+    public final static String POKEMON_NAME = "mPokemonName";
+    public final static String POKEMON_TYPE = "mPokemonType";
+    public final static String POKEMON_IMAGE = "mPokemonImage";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +44,7 @@ public class HomeActivity extends Activity implements MyPokemonAdapter.Listener 
         mPokemonList.add(new MyPokemonBank("Miaouss", "Normal", "https://www.pokepedia.fr/images/thumb/b/b8/Miaouss-RFVF.png/250px-Miaouss-RFVF.png"));
         mPokemonList.add(new MyPokemonBank("Mew", "Psy", "https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png"));
 
-        mAdapter = new MyPokemonAdapter(mPokemonList, this, (MyPokemonAdapter.Listener) this);
+        mAdapter = new MyPokemonAdapter(mPokemonList, this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mRecyclerView.setAdapter(mAdapter);
@@ -58,5 +64,11 @@ public class HomeActivity extends Activity implements MyPokemonAdapter.Listener 
                 "nom=" + item.getName() + ", type=" + item.getType(),
                 Toast.LENGTH_SHORT
         ).show();
+        Intent i = new Intent(HomeActivity.this,ProfileActivity.class);
+        i.putExtra(POKEMON_NAME, item.getName());
+        i.putExtra(POKEMON_TYPE, item.getType());
+        i.putExtra(POKEMON_IMAGE, item.getAvatarUrl());
+        
+        startActivity(i);
     }
 }
