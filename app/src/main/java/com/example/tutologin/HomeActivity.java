@@ -59,11 +59,6 @@ public class HomeActivity extends Activity implements MyPokemonAdapter.Listener 
 
     @Override
     public void onItemClick(MyPokemonBank item) {
-        Toast.makeText(
-                this,
-                "nom=" + item.getName() + ", type=" + item.getType(),
-                Toast.LENGTH_SHORT
-        ).show();
         Intent i = new Intent(HomeActivity.this,ProfileActivity.class);
         i.putExtra(POKEMON_NAME, item.getName());
         i.putExtra(POKEMON_TYPE, item.getType());

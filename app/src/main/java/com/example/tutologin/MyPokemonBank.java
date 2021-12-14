@@ -1,8 +1,8 @@
 package com.example.tutologin;
 
-import java.io.Serializable;
+import androidx.fragment.app.Fragment;
 
-public class MyPokemonBank implements Serializable {
+public class MyPokemonBank extends Fragment {
 
     private String name;
     private String type;
